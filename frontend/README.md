@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# 🚀 AI Resume Insight
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> **Next-Generation Resume Analyzer & Smart ATS**
+>
+> *Powered by Google Gemini AI, AWS S3, and MongoDB.*
 
-## Available Scripts
+[![React](https://img.shields.io/badge/Frontend-React-blue)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Backend-Flask-green)](https://flask.palletsprojects.com/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB-forestgreen)](https://www.mongodb.com/)
+[![AWS](https://img.shields.io/badge/Cloud-AWS%20S3-orange)](https://aws.amazon.com/)
+[![AI](https://img.shields.io/badge/AI-Google%20Gemini-purple)](https://deepmind.google/technologies/gemini/)
 
-In the project directory, you can run:
+## 📋 Overview
 
-### `npm start`
+**AI Resume Insight** is a full-stack Application Tracking System (ATS) simulator designed to help recruiters and candidates understand resume fit instantly. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Unlike simple keyword matchers, this application uses **Generative AI (Google Gemini)** to deeply analyze the context of a resume against a job description. It calculates a compatibility score, identifies missing hard/soft skills, and provides constructive feedback—all in real-time.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Key Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **🧠 AI-Powered Analysis:** Uses LLMs to understand resume context, not just keywords.
+- **☁️ Cloud Storage:** Automatically uploads and hosts resume documents on **AWS S3**.
+- **📊 Interactive Dashboard:** Visual match score with animated indicators.
+- **🔍 Skill Gap Analysis:** Explicitly lists missing keywords and skills required for the role.
+- **🌓 Dark/Light Mode:** Fully responsive UI with persistent theme preferences.
+- **🗂️ History Tracking:** Saves all past scans to **MongoDB** for easy retrieval.
+- **⚡ Drag & Drop:** Modern, intuitive file upload interface.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Frontend**
+- **React.js:** Component-based UI architecture.
+- **CSS3 Variables:** For dynamic theming (Dark/Light mode).
+- **Axios:** For API communication.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Backend**
+- **Python (Flask):** REST API development.
+- **Google Generative AI:** For resume parsing and scoring.
+- **Boto3:** For AWS S3 integration.
+- **PyMongo:** For database interactions.
 
-### `npm run eject`
+### **Infrastructure**
+- **Database:** MongoDB Atlas (Cloud).
+- **Storage:** AWS S3 Bucket.
+- **Deployment:** Vercel (Frontend) + Render (Backend).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ⚙️ System Architecture
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1.  **Upload:** User uploads PDF/DOCX via React Frontend.
+2.  **Storage:** Backend uploads the file to **AWS S3** and generates a secure URL.
+3.  **Processing:** Text is extracted from the document using Python.
+4.  **AI Analysis:** The extracted text + Job Description are sent to **Google Gemini**.
+5.  **Result:** Gemini returns a JSON object (Score, Missing Skills, Summary).
+6.  **Persistence:** Results are saved to **MongoDB** for history tracking.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🚀 Getting Started (Run Locally)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Follow these steps to run the project on your local machine.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **1. Clone the Repository**
+```bash
+git clone [https://github.com/YOUR_USERNAME/AI-Resume-Insight.git](https://github.com/YOUR_USERNAME/AI-Resume-Insight.git)
+cd AI-Resume-Insight
 
-### Code Splitting
+2. Backend Setup
+Navigate to the backend folder and install dependencies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Bash
 
-### Analyzing the Bundle Size
+cd backend
+# Create virtual environment (Optional but recommended)
+python -m venv venv
+# Windows: venv\Scripts\activate
+# Mac/Linux: source venv/bin/activate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Install requirements
+pip install -r requirements.txt
+Configure Environment Variables: Create a .env file in the backend folder and add your keys:
 
-### Making a Progressive Web App
+Code snippet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+GOOGLE_API_KEY=your_gemini_key
+AWS_ACCESS_KEY_ID=your_aws_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret
+AWS_REGION=eu-north-1
+AWS_BUCKET_NAME=your_bucket_name
+MONGO_URI=your_mongo_connection_string
+Run the Server:
 
-### Advanced Configuration
+Bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+python app.py
+3. Frontend Setup
+Open a new terminal and navigate to the frontend folder.
 
-### Deployment
+Bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+cd frontend
+npm install
+npm start
+The application will launch at http://localhost:3000.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📸 Screenshots
