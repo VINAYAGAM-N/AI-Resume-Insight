@@ -97,64 +97,74 @@ textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
 .view-link { color: var(--primary); text-decoration: none; font-weight: 600; }
 .full-width { width: 100%; }
 
-/* --- 📱 MOBILE RESPONSIVENESS (FORCE FIX) --- */
-@media screen and (max-width: 850px) {
-
-  /* 1. Un-freeze the page height so you can scroll */
-  html, body, #root, .dashboard-container {
-    height: auto !important;
-    min-height: 100vh;
-    overflow-y: auto !important;
-    overflow-x: hidden; /* Stop side-scrolling */
-  }
-
-  /* 2. Stack everything vertically */
+/* --- 🚑 EMERGENCY MOBILE FIX --- */
+@media only screen and (max-width: 900px) {
+  
+  /* 1. Break the "Side-by-Side" layout */
   .dashboard-container {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important; /* Stack Top to Bottom */
+    height: auto !important; /* Allow scrolling */
+    min-height: 100vh;
+    overflow: visible !important;
   }
 
-  /* 3. Turn Sidebar into a Top Navbar */
+  /* 2. Fix the Sidebar (Now a Top Bar) */
   .sidebar {
     width: 100% !important;
     height: auto !important;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px;
-    position: relative;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+    flex-direction: row !important; /* Items side-by-side */
+    justify-content: space-between !important;
+    padding: 15px !important;
+    position: relative !important;
+    background-color: var(--card-bg); /* Ensure it's visible */
+    z-index: 100;
   }
 
-  /* 4. Fix the Main Content Area */
+  /* 3. Adjust Sidebar Text */
+  .sidebar .logo {
+    font-size: 1.2rem !important;
+    margin-bottom: 0 !important;
+  }
+  .menu-item {
+    font-size: 0.8rem !important;
+    padding: 5px 10px !important;
+  }
+
+  /* 4. Fix Main Content Width */
   .main-content {
     width: 100% !important;
-    padding: 15px !important;
+    padding: 10px !important;
     margin: 0 !important;
-    height: auto !important;
+    overflow-x: hidden !important;
   }
 
-  /* 5. Force Cards to be Full Width */
+  /* 5. Force Grid to Stack */
   .grid-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
   }
 
-  .card, .input-section, .result-section {
+  /* 6. Make Cards Full Width */
+  .card {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 !important;
+    box-sizing: border-box !important;
+    margin-bottom: 20px !important;
   }
 
-  /* 6. Fix Inputs and Text Areas */
-  textarea {
-    min-height: 120px; /* Smaller height for phone */
+  /* 7. Fix the Resume Drop Zone */
+  .drop-zone {
+    width: 100% !important;
+    min-height: 100px !important;
   }
-
-  /* 7. Hide "View PDF" link on History Table (Too wide) */
-  .data-table th:nth-child(4), 
-  .data-table td:nth-child(4) {
-    display: none;
+  
+  /* 8. Fix Tables (Horizontal Scroll) */
+  .card.full-width {
+    overflow-x: auto !important;
+  }
+  .data-table {
+    min-width: 600px; /* Force scroll if table is wide */
   }
 }
