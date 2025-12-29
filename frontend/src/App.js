@@ -17,7 +17,7 @@ function App() {
   const [dragActive, setDragActive] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const API_URL = "http://127.0.0.1:5000"; 
+  const API_URL = "https://ai-resume-insight.onrender.com"; 
 
   // 1. Load Theme on Startup
   useEffect(() => {
