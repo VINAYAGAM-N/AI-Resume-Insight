@@ -97,66 +97,64 @@ textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
 .view-link { color: var(--primary); text-decoration: none; font-weight: 600; }
 .full-width { width: 100%; }
 
-/* --- MOBILE RESPONSIVENESS FIX --- */
-@media (max-width: 768px) {
-  /* 1. Stack the main container */
-  .dashboard-container {
-    flex-direction: column;
-    height: auto; /* Allow scrolling */
-    overflow-y: auto;
+/* --- 📱 MOBILE RESPONSIVENESS (FORCE FIX) --- */
+@media screen and (max-width: 850px) {
+
+  /* 1. Un-freeze the page height so you can scroll */
+  html, body, #root, .dashboard-container {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    overflow-x: hidden; /* Stop side-scrolling */
   }
 
-  /* 2. Turn Sidebar into a Top Navigation Bar */
+  /* 2. Stack everything vertically */
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 3. Turn Sidebar into a Top Navbar */
   .sidebar {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: relative;
-  }
-
-  .sidebar .logo {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-  }
-
-  .menu-item {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-  }
-
-  /* 3. Main Content Padding */
-  .main-content {
     padding: 15px;
-    height: auto;
-    overflow-y: visible; /* Let the page scroll naturally */
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
 
-  /* 4. Stack the Grid (Input above Result) */
+  /* 4. Fix the Main Content Area */
+  .main-content {
+    width: 100% !important;
+    padding: 15px !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  /* 5. Force Cards to be Full Width */
   .grid-layout {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .card {
-    width: 100%;
-    margin-bottom: 20px;
+  .card, .input-section, .result-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 
-  /* 5. Fix the Drop Zone size */
-  .drop-zone {
-    padding: 20px;
-  }
-  
-  .top-bar h2 {
-    font-size: 1.2rem;
+  /* 6. Fix Inputs and Text Areas */
+  textarea {
+    min-height: 120px; /* Smaller height for phone */
   }
 
-  .theme-btn {
-    font-size: 0.8rem;
-    padding: 5px 10px;
+  /* 7. Hide "View PDF" link on History Table (Too wide) */
+  .data-table th:nth-child(4), 
+  .data-table td:nth-child(4) {
+    display: none;
   }
 }
