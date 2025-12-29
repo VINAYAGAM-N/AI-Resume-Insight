@@ -96,3 +96,67 @@ textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
 .truncate { max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-muted); }
 .view-link { color: var(--primary); text-decoration: none; font-weight: 600; }
 .full-width { width: 100%; }
+
+/* --- MOBILE RESPONSIVENESS FIX --- */
+@media (max-width: 768px) {
+  /* 1. Stack the main container */
+  .dashboard-container {
+    flex-direction: column;
+    height: auto; /* Allow scrolling */
+    overflow-y: auto;
+  }
+
+  /* 2. Turn Sidebar into a Top Navigation Bar */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  .sidebar .logo {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .menu-item {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* 3. Main Content Padding */
+  .main-content {
+    padding: 15px;
+    height: auto;
+    overflow-y: visible; /* Let the page scroll naturally */
+  }
+
+  /* 4. Stack the Grid (Input above Result) */
+  .grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* 5. Fix the Drop Zone size */
+  .drop-zone {
+    padding: 20px;
+  }
+  
+  .top-bar h2 {
+    font-size: 1.2rem;
+  }
+
+  .theme-btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
