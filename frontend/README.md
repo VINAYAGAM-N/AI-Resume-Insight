@@ -67,14 +67,13 @@ Follow these steps to run the project on your local machine.
 
 ### **1. Clone the Repository**
 ```bash
-git clone [https://github.com/YOUR_USERNAME/AI-Resume-Insight.git](https://github.com/YOUR_USERNAME/AI-Resume-Insight.git)
+git clone [https://github.com/VINAYAGAM-N/AI-Resume-Insight.git](https://github.com/VINAYAGAM-N/AI-Resume-Insight.git)
 cd AI-Resume-Insight
 
-2. Backend Setup
-Navigate to the backend folder and install dependencies.
+### 2. Backend Setup
+Navigate to the `backend` folder and install dependencies.
 
-Bash
-
+```bash
 cd backend
 # Create virtual environment (Optional but recommended)
 python -m venv venv
@@ -82,30 +81,27 @@ python -m venv venv
 # Mac/Linux: source venv/bin/activate
 
 # Install requirements
+```bash
 pip install -r requirements.txt
-Configure Environment Variables: Create a .env file in the backend folder and add your keys:
 
-Code snippet
-
-GOOGLE_API_KEY=your_gemini_key
+#Configure Environment Variables: Create a .env file in the backend folder and add your keys:Code snippetGOOGLE_API_KEY=your_gemini_key
+```bash
 AWS_ACCESS_KEY_ID=your_aws_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret
 AWS_REGION=eu-north-1
 AWS_BUCKET_NAME=your_bucket_name
 MONGO_URI=your_mongo_connection_string
-Run the Server:
 
-Bash
-
+#Run the Server:
+```bash
 python app.py
-3. Frontend Setup
-Open a new terminal and navigate to the frontend folder.
-
-Bash
-
-cd frontend
+### 3. Frontend Setup
+Open a new terminal and navigate to the frontend folder.Bashcd frontend
+```bash
 npm install
 npm start
-The application will launch at http://localhost:3000.
 
-📸 Screenshots
+The application will launch at http://localhost:3000.
+##📸 Screenshots
+Light Mode DashboardAnalysis Result (Dark Mode)
+
