@@ -37,7 +37,7 @@ except Exception as e:
 
 # --- HELPER FUNCTIONS ---
 def get_gemini_response(text, jd):
-    model = genai.GenerativeModel('gemini-flash-latest')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     prompt = f"""
     Act as an ATS (Applicant Tracking System).
     Job Description: {jd}
